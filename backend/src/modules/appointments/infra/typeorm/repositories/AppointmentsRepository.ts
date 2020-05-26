@@ -65,6 +65,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
         ),
       },
       relations: ['user'],
+      // trás os dados de user
     });
 
     return appointments;
