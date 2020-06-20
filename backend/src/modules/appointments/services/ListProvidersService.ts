@@ -26,6 +26,13 @@ class ListProvidersService {
       `providers-list:${user_id}`,
     );
 
+    // Para ressetar e carregar imagens atualizadas (deveria resolver auto!??)
+    /* let users = await this.cacheProvider.recover<User[]>(
+      `providers-list:${user_id}`,
+    ); */
+
+    /* let users; */
+
     if (!users) {
       users = await this.usersRepository.findAllProviders({
         exceptUser_id: user_id,

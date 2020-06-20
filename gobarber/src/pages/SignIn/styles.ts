@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import { Platform } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   flex: 1;
@@ -16,7 +17,7 @@ export const Title = styled.Text`
   margin: 64px 0 24px;
 `;
 
-export const ForgotPassword = styled.TouchableOpacity`
+export const ForgotPassword = styled(RectButton)`
   margin-top: 24px;
 `;
 

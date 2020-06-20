@@ -10,6 +10,7 @@ import {
   Container,
   Header,
   HeaderTitle,
+  SignOutButton,
   UserName,
   ProfileButton,
   UserAvatar,
@@ -31,7 +32,7 @@ export interface Provider {
 
 const Dashboard: React.FC = () => {
   const [providers, setProviders] = useState<Provider[]>([]);
-  const { signOut, user } = useAuth();
+  const { user, signOut } = useAuth();
   const { navigate } = useNavigation();
 
   useEffect(() => {
@@ -41,9 +42,8 @@ const Dashboard: React.FC = () => {
   }, []);
 
   const navigateToProfile = useCallback(() => {
-    // navigate('Profile');
-    signOut();
-  }, [signOut]);
+    navigate('Profile');
+  }, [navigate]);
 
   const navigateToCreateAppointment = useCallback(
     (providerId: string) => {
@@ -52,6 +52,10 @@ const Dashboard: React.FC = () => {
     [navigate],
   );
 
+  const navigateToSignOut = useCallback(() => {
+    signOut();
+  }, [signOut]);
+
   return (
     <Container>
       <Header>
@@ -59,6 +63,9 @@ const Dashboard: React.FC = () => {
           Bem vindo, {'\n'}
           <UserName>{user.name}</UserName>
         </HeaderTitle>
+        <SignOutButton onPress={navigateToSignOut}>
+          <Icon name="power" size={20} color="#ff9900" />
+        </SignOutButton>
 
         <ProfileButton onPress={navigateToProfile}>
           <UserAvatar source={{ uri: user.avatar_url }} />
